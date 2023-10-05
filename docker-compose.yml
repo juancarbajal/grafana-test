@@ -28,5 +28,26 @@ services:
     volumes:
       - logs_dir:/tmp/log
 
+  nodejs-app:
+    build: nodejs_app
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+
+  python-app:
+    build: python_app
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+
+  php-app:
+    build: php_app
+    ports:
+      - "5003:80"
+    environment:
+      - PORT=5003
+      
 volumes:
   logs_dir:
