@@ -1,4 +1,4 @@
-fclients:
+clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:

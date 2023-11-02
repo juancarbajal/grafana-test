@@ -19,7 +19,8 @@ schema_config:
   configs:
     - from: 2020-08-01
       store: boltdb-shipper
-      object_store: filesystem
+      # object_store: filesystem
+      object_store: aws
       schema: v11
       index:
         prefix: index_
@@ -36,3 +37,19 @@ common:
     instance_addr: 127.0.0.1
     kvstore:
       store: inmemory
+
+# s3 configuration
+storage_config:
+  boltdb_shipper:
+    active_index_directory: /loki/boltdb-shipper-active
+    cache_location: /loki/boltdb-shipper-cache
+    cache_ttl: 24h         # Can be increased for faster performance over longer query periods, uses more disk space
+    shared_store: s3
+  aws:
+    s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
+
+
+# policies of data retention 
+table_manager:
+  retention_deletes_enabled: true
+  retention_period: 720h
