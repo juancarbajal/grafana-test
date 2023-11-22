@@ -46,14 +46,14 @@ storage_config:
     shared_store: s3
   aws:
     region: <region>
-    #s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
-  s3:
-    bucketname: <bucketname>
-    endpoint: s3.amazon.com
-    access_key_id: <accesskey>
-    secret_access_key: <secretkey>
-    insecure: false
-    signature_version2: false 
+    s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
+  # s3:
+  #   bucketname: <bucketname>
+  #   endpoint: s3.amazon.com
+  #   access_key_id: <accesskey>
+  #   secret_access_key: <secretkey>
+  #   insecure: false
+  #   signature_version2: false 
 # policies of data retention 
 table_manager:
   retention_deletes_enabled: true
