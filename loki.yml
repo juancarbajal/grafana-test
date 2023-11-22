@@ -18,7 +18,7 @@ ruler:
 schema_config:
   configs:
     - from: 2020-08-01
-      store: s3
+      store: boltdb-shipper
       object_store: aws
       schema: v11
       index:
