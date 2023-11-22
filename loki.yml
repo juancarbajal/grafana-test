@@ -18,8 +18,7 @@ ruler:
 schema_config:
   configs:
     - from: 2020-08-01
-      store: boltdb-shipper
-      # object_store: filesystem
+      store: s3
       object_store: aws
       schema: v11
       index:
@@ -46,9 +45,15 @@ storage_config:
     cache_ttl: 24h         # Can be increased for faster performance over longer query periods, uses more disk space
     shared_store: s3
   aws:
-    s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
-
-
+    region: <region>
+    #s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
+    s3:
+      bucketname: <bucketname>
+      endpoint: s3.amazon.com
+      access_key_id: <accesskey>
+      secret_access_key: <secretkey>
+      insecure: false
+      signature_version2: false 
 # policies of data retention 
 table_manager:
   retention_deletes_enabled: true
