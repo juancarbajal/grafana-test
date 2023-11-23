@@ -45,7 +45,7 @@ storage_config:
     cache_ttl: 24h         # Can be increased for faster performance over longer query periods, uses more disk space
     shared_store: s3
   aws:
-    region: <region>
+  #  region: <region>
     s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
   # s3:
   #   bucketname: <bucketname>
