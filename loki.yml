@@ -4,16 +4,16 @@ server:
   http_listen_port: 3100
   http_listen_address: 0.0.0.0
 
-ruler:
-  evaluation_interval: 10s
-  poll_interval: 10s
-  storage:
-    type: local
-    local:
-      directory: /etc/loki/rules
-  rule_path: /tmp/loki/rules-temp
-  enable_api: true
-  enable_alertmanager_v2: true
+# ruler:
+#   evaluation_interval: 10s
+#   poll_interval: 10s
+#   storage:
+#     type: local
+#     local:
+#       directory: /etc/loki/rules
+#   rule_path: /tmp/loki/rules-temp
+#   enable_api: true
+#   enable_alertmanager_v2: true
 
 schema_config:
   configs:
@@ -42,19 +42,20 @@ storage_config:
   boltdb_shipper:
     active_index_directory: /loki/boltdb-shipper-active
     cache_location: /loki/boltdb-shipper-cache
-    cache_ttl: 24h         # Can be increased for faster performance over longer query periods, uses more disk space
+    cache_ttl: 24h         
     shared_store: s3
   aws:
-  #  region: <region>
-    s3: <s3-host>     #s3://<user_credential>:<user_key>@<aws_zone>/gflog
-  # s3:
-  #   bucketname: <bucketname>
-  #   endpoint: s3.amazon.com
-  #   access_key_id: <accesskey>
-  #   secret_access_key: <secretkey>
-  #   insecure: false
-  #   signature_version2: false 
-# policies of data retention 
+    # s3: s3://us-east-1
+    bucketnames: <bucketname>
+    s3forcepathstyle: true 
+    region: <region>
+    insecure: false
+    sse_encryption: false
+    access_key_id: <accesskey>
+    secret_access_key: <secretkey>
+  filesystem:
+    directory: /tmp/loki/chunks
+
 table_manager:
   retention_deletes_enabled: true
   retention_period: 720h
