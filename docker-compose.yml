@@ -24,20 +24,20 @@ services:
       # - ./rules.yml:/etc/loki/rules/fake/rules.yml
 # - ./loki.yml:/mnt/config/loki.yml
 
-  promtail:
-    container_name: promtail
-    image: "grafana/promtail:2.4.2"
-    volumes:
-      - logs_dir:/tmp/log
-      - ./promtail.yml:/etc/promtail/config.yaml
-    command: -config.file=/etc/promtail/config.yaml
+  # promtail:
+  #   container_name: promtail
+  #   image: "grafana/promtail:2.4.2"
+  #   volumes:
+  #     - logs_dir:/tmp/log
+  #     - ./promtail.yml:/etc/promtail/config.yaml
+  #   command: -config.file=/etc/promtail/config.yaml
 
-  flog:
-    container_name: flog
-    image: "mingrammer/flog:0.4.3"
-    command: -f json -t log -o /tmp/log/json.log -d 200ms -w -l
-    volumes:
-      - logs_dir:/tmp/log
+  # flog:
+  #   container_name: flog
+  #   image: "mingrammer/flog:0.4.3"
+  #   command: -f json -t log -o /tmp/log/json.log -d 200ms -w -l
+  #   volumes:
+  #     - logs_dir:/tmp/log
 
   nginx-proxy:
     container_name: nginx
