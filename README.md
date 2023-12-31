@@ -19,7 +19,7 @@ Configure bucket policies
             "Effect": "Allow",
             "Principal": {
                 "AWS": [
-                    "arn:aws:iam::171912483498:user/Juan.Carbajal"
+                    "<ARN IAM User >"
                 ]
             },
             "Action": [
@@ -36,6 +36,8 @@ Configure bucket policies
     ]
 }
 ```
+
+Edit file nginx.conf and replace <grafana_domain> with the main domain designed to grafana. 
 
 # Execute 
 
