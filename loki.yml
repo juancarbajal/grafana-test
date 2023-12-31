@@ -64,3 +64,8 @@ querier:
   max_concurrent: 2048
 query_scheduler:
   max_outstanding_requests_per_tenant: 2048
+
+compactor:
+  retention_enabled: true
+limits_config:
+  retention_period: 90d
