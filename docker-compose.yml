@@ -21,56 +21,6 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
       - ./loki.yml:/etc/loki/local-config.yaml
-      # - ./rules.yml:/etc/loki/rules/fake/rules.yml
-# - ./loki.yml:/mnt/config/loki.yml
-
-  # promtail:
-  #   container_name: promtail
-  #   image: "grafana/promtail:2.4.2"
-  #   volumes:
-  #     - logs_dir:/tmp/log
-  #     - ./promtail.yml:/etc/promtail/config.yaml
-  #   command: -config.file=/etc/promtail/config.yaml
-
-  # flog:
-  #   container_name: flog
-  #   image: "mingrammer/flog:0.4.3"
-  #   command: -f json -t log -o /tmp/log/json.log -d 200ms -w -l
-  #   volumes:
-  #     - logs_dir:/tmp/log
-
-  nginx-proxy:
-    container_name: nginx
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./certs:/etc/nginx/certs
-    depends_on:
-      - grafana
-  
-  # nodejs-app:
-  #   build: nodejs_app
-  #   ports:
-  #     - "5001:5001"
-  #   environment:
-  #     - PORT=5001
-
-  # python-app:
-  #   build: python_app
-  #   ports:
-  #     - "5002:5002"
-  #   environment:
-  #     - PORT=5002
-
-  # php-app:
-  #   build: php_app
-  #   ports:
-  #     - "5003:80"
-  #   environment:
-  #     - PORT=5003
       
 volumes:
   logs_dir:
