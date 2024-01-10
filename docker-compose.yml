@@ -9,6 +9,7 @@ services:
     volumes:
       - ./provisioning:/etc/grafana/provisioning
       - ./grafana-storage:/var/lib/grafana
+      - ./grafana.ini:/etc/grafana/grafana.ini
     environment:
       - GF_PLUGINS_PLUGIN_ADMIN_ENABLED=true
       - GF_INSTALL_PLUGINS=grafana-clock-panel, grafana-simple-json-datasource
