@@ -1,0 +1,35 @@
+
+* Message in Treble
+
+** Format to template in Treble
+
+#+begin_src quote
+{{title}}
+
+Value: {{valueString}}
+Dashboard: {{dashboardURL}}
+Panel: {{panelURL}}
+#+end_src
+Labels:
+ - alertname = {{alertName}}
+ - instance = {{instance}}
+Annotations:
+ - summary = {{summary}}
+Silence alert: {{silenceURL}}
+
+
+Example:
+
+#+begin_src quote
+[FIRING:2] General Alerting
+
+Value: [ var='C0' metric='CPU' labels={} value=0.08871583666445482 ]
+Labels:
+ - alertname = notifications-cpu-memory
+ - grafana_folder = General Alerting
+Annotations:
+ - summary = *
+Dashboard: http://grafana.olaclick.dev:3000/alerting/grafana/QOHYgGdIz/view
+Silence: http://grafana.olaclick.dev:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3Dnotifications-cpu-memory&matcher=grafana_folder%3DGeneral+Alerting&matcher=service%3Dms-notifications
+Panel: http://grafana.olaclick.dev:3000/alerting/grafana/z_O6IeFIk/view
+#+end_src

@@ -1,0 +1,108 @@
+# message fail 
+POST http://localhost:8080/message
+Content-Type: application/json
+{
+        "jql": "project = HCPUB",
+        "startAt": 0,
+        "maxResults": 15,
+        "title": "test title "
+}
+
+# message 
+POST http://localhost:8080/message
+Content-Type: application/json
+
+{
+"receiver": "",
+"status": "firing",
+"alerts": [
+  {
+    "status": "firing",
+    "labels": "",
+    "annotations": "",
+    "startsAt": "2024-01-16T20:22:39.548821324Z",
+    "endsAt": "0001-01-01T00:00:00Z",
+    "generatorURL": "",
+    "fingerprint": "57c6d9296de2ad39",
+    "silenceURL": "http://migrafana.com/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DTestAlert&matcher=instance%3DGrafana",
+    "dashboardURL": "",
+    "panelURL": "",
+    "valueString": "[ metric='foo' labels={instance=bar} value=10 ]"
+    }
+  ],
+  "groupLabels": {},
+  "commonLabels": { "alertname": "TestAlert", "instance": "Grafana" },
+  "commonAnnotations": { "summary": "Notification test" },
+  "externalURL": "http://migrafana.com/",
+  "version": "1",
+  "groupKey": "{alertname='TestAlert', instance='Grafana'}2024-01-16 20:22:39.548821324 +0000 UTC m=+7.516053418",
+  "truncatedAlerts": 0,
+  "orgId": 1,
+  "title": "[FIRING:1]  (TestAlert Grafana)",
+  "state": "alerting",
+  "message": "**Firing**\n\n Value: [ metric='foo' labels={instance=bar} value=10 ]\n Labels:\n - alertname = TestAlert\n - instance = Grafana\n Annotations:\n - summary = Notification test\nSilence: http://migrafana.com/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DTestAlert&matcher=instance%3DGrafana\n"
+}
+
+#message 2
+POST http://localhost:8080/message
+Content-Type: application/json
+
+{
+"receiver": "",
+"status": "firing",
+"alerts": [
+  {
+    "status": "firing",
+    "labels": "",
+    "annotations": "",
+    "startsAt": "2024-01-16T20:22:39.548821324Z",
+    "endsAt": "0001-01-01T00:00:00Z",
+    "generatorURL": "",
+    "fingerprint": "57c6d9296de2ad39",
+    "silenceURL": "http://migrafana.com/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DTestAlert&matcher=instance%3DGrafana",
+    "dashboardURL": "",
+    "panelURL": "",
+    "valueString": "[ metric='foo' labels={instance=bar} value=10 ]"
+    }
+  ],
+  "groupLabels": {},
+  "commonLabels": { "alertname": "TestAlert", "instance": "Grafana" },
+  "commonAnnotations": { "summary": "Notification test" },
+  "externalURL": "http://migrafana.com/",
+  "version": "1",
+  "groupKey": "{alertname='TestAlert', instance='Grafana'}2024-01-16 20:22:39.548821324 +0000 UTC m=+7.516053418",
+  "truncatedAlerts": 0,
+  "orgId": 1,
+  "title": "[FIRING:1]  (TestAlert Grafana)",
+  "state": "alerting",
+  "message": "**Firing**\n\n Value: [ metric='foo' labels={instance=bar} value=10 ]\n Labels:\n - alertname = TestAlert\n - instance = Grafana\n Annotations:\n - summary = Notification test\nSilence: http://migrafana.com/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DTestAlert&matcher=instance%3DGrafana\n"
+}
+
+
+#
+POST https://main.treble.ai/deployment/api/poll/489978
+Content-Type: application/json
+Accept: application/json
+Authorization: pR5ajAykyXa5XHQgYjwmA20wJEEwpwQN6zmH0PIg
+Content-Length: 100
+    
+{"cellphone": "952713764","country_code": "051", "user_session_keys":["key":"", "value":""]}
+
+
+
+
+#direct
+POST https://main.treble.ai/deployment/api/poll/489978
+Content-Type: application/json
+Accept: application/json
+Authorization: ak_8KDqVduAjW5gnSKe_IG5UqF9a1ko97jOPg
+     {"users":[{"cellphone":"952713764","country_code":"+51","user_session_keys":[{"key":"title","value":"title"},{"key":"valueString","value":"valueString"},{"key":"dashboardURL","value":"dashboardURL"},{"key":"panelURL","value":"panelURL"},{"key":"deployment_squad","value":"DS_14159803370"}]}]}
+
+
+#treble 3
+POST https://main.treble.ai/deployment/api/poll/489978
+Content-Type: application/json
+Accept: application/json
+Authorization: ak_8KDqVduAjW5gnSKe_IG5UqF9a1ko97jOPg
+
+{"users":[{"cellphone":"952713764","country_code":"+51","user_session_keys":[{"key":"title","value":"[FIRING:1]  (TestAlert Grafana)"},{"key":"valueString","value":"[ metric='fo1' labels={instance=bar} value=10 ]"},{"key":"dashboardURL","value":"raton"},{"key":"panelURL","value":"-"},{"key":"deployment_squad","value":"DS_14159803370"}]}]}
