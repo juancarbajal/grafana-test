@@ -30,9 +30,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    environment:
-      - PORT=8080
-      - TREBLE_URL=https://main.treble.ai/deployment/api/poll/
-      - TREBLE_API_KEY=ak_8KDqVduAjW5gnSKe_IG5UqF9a1ko97jOPg
-      - TREBLE_POLL_ID=489978
-      - PHONES=+51-952713764,+51-914553528
+    env_file:
+      - wspmsg.env

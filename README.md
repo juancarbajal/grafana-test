@@ -39,6 +39,8 @@ Configure bucket policies
 
 Edit file nginx.conf and replace <grafana_domain> with the main domain designed to grafana. 
 
+Configure loki.yml with the s3 access, consider the values <VALUE>
+
 # Execute 
 
 Run the command 
